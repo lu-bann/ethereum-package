@@ -1,17 +1,17 @@
 postgres:
-  hostname: {{ .Hostname }}
-  port: 5432
-  db_name: {{ .DbName }}
-  user: {{ .User }}
-  password: {{ .Password }}
-  ssl_mode: {{ .SslMode }}
-  region: {{ .Region }}
-  region_name: {{ .RegionName }}
+  hostname: "{{ .Hostname }}"
+  port: "{{ .Port }}"
+  db_name: "{{ .DbName }}"
+  user: "{{ .User }}"
+  password: "{{ .Password }}"
+  ssl_mode: "{{ .SslMode }}"
+  region: "{{ .Region }}"
 redis:
-  url: "redis://127.0.0.1:6379"
+  region_name: "{{ .RegionName }}"
+  url: "{{ .Url }}"
 broadcasters:
   - !BeaconClient
-      url: "http://127.0.0.1:4000"
+      url: {{}}
 simulator:
   url: "http://127.0.0.1:8545"
 beacon_clients:
