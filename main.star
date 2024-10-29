@@ -57,6 +57,7 @@ assertoor = import_module("./src/assertoor/assertoor_launcher.star")
 get_prefunded_accounts = import_module(
     "./src/prefunded_accounts/get_prefunded_accounts.star"
 )
+helix_relay = import_module("./src/mev/helix-relay/helix_launcher.star")
 
 GRAFANA_USER = "admin"
 GRAFANA_PASSWORD = "admin"
@@ -656,6 +657,16 @@ def run(plan, args={}):
                 fuzz_target,
                 args_with_right_defaults.custom_flood_params,
                 global_node_selectors,
+            )
+        elif additional_service == "helix_relay":
+            plan.print("Launching helix relay")
+            helix_relay_config_template = read_file(
+                static_files.HELIX_MEV_RELAY_CONFIG_FILEPATH
+            )
+            helix_relay.launch_helix(
+                plan,
+                helix_relay_config_template
+                mev_params,
             )
         else:
             fail("Invalid additional service %s" % (additional_service))
