@@ -16,6 +16,7 @@ RBUILDER_BLOCKLIST_FILENAME = "blocklist.json"
 
 RBUILDER_MIN_MEMORY = 128
 RBUILDER_MAX_MEMORY = 1024
+
 def launch_rbuilder(
     plan,
     rbuilder_params,
@@ -105,6 +106,7 @@ def launch_rbuilder(
         port_publisher, 
         global_tolerations
     )
+
     cl_context = launch_rbuilder_lighthouse(
         plan, 
         participant, 
@@ -121,6 +123,49 @@ def launch_rbuilder(
     )
 
     return 
+
+def launch_rbuilder_reth(
+    plan,
+    service_name,
+    participant,
+    prague_time,
+    network_params,
+    el_cl_data,
+    jwt_file,
+    additional_files,
+    genesis_validator_root,
+    all_el_contexts,
+    node_selectors,
+    port_publisher,
+    global_tolerations,
+):
+    index = 1
+    el_cl_data = el_cl_genesis_data.new_el_cl_genesis_data(
+        el_cl_data,
+        genesis_validator_root,
+        prague_time,
+    )
+    launcher = reth.new_reth_launcher(
+        el_cl_data,
+        jwt_file,
+        network_params.network,
+    )
+            
+    el_context = reth.launch(
+        plan,
+        launcher,
+        "rbuilder-el-reth-lighthouse",
+        participant,
+        "info",
+        all_el_contexts,
+        False,
+        global_tolerations, #tolerations,
+        node_selectors,
+        port_publisher,
+        index,
+        additional_files
+    )
+    return el_context
 
 def launch_rbuilder_lighthouse(
     plan,
@@ -173,49 +218,6 @@ def launch_rbuilder_lighthouse(
         index
     )
     return cl_context
-    
-def launch_rbuilder_reth(
-    plan,
-    service_name,
-    participant,
-    prague_time,
-    network_params,
-    el_cl_data,
-    jwt_file,
-    additional_files,
-    genesis_validator_root,
-    all_el_contexts,
-    node_selectors,
-    port_publisher,
-    global_tolerations,
-):
-    index = 1
-    el_cl_data = el_cl_genesis_data.new_el_cl_genesis_data(
-        el_cl_data,
-        genesis_validator_root,
-        prague_time,
-    )
-    launcher = reth.new_reth_launcher(
-        el_cl_data,
-        jwt_file,
-        network_params.network,
-    )
-            
-    el_context = reth.launch(
-        plan,
-        launcher,
-        "rbuilder-el-reth-lighthouse",
-        participant,
-        "info",
-        all_el_contexts,
-        False,
-        global_tolerations, #tolerations,
-        node_selectors,
-        port_publisher,
-        index,
-        additional_files
-    )
-    return el_context
 
 
 def participant_struct(participant):
