@@ -238,7 +238,6 @@ def participant_struct(participant):
         vc_type=participant["vc_type"],
         vc_image=participant["vc_image"],
         vc_log_level=participant["vc_log_level"],
-        vc_count=participant["vc_count"],
         vc_tolerations=participant["vc_tolerations"],
         cl_extra_params=participant["cl_extra_params"],
         cl_extra_labels=participant["cl_extra_labels"],
