@@ -11,6 +11,7 @@ lighthouse = import_module("../../cl/lighthouse/lighthouse_launcher.star")
 
 EXECUTION_DATA_DIRPATH_ON_CLIENT_CONTAINER = "/data/reth/execution-data"
 RBUILDER_CONFIG_FILENAME = "rbuilder-config.toml"
+RBUILDER_CONFIG_FILEPATH = "/app/config/"
 RBUILDER_BLOCKLIST_FILENAME = "blocklist.json"
 
 RBUILDER_MIN_MEMORY = 128
@@ -84,6 +85,10 @@ def launch_rbuilder(
 
     config_files_artifact_name = plan.render_templates(
         template_and_data_by_rel_dest_filepath, "rbuilder-config"
+    )
+
+    config_file_path = shared_utils.path_join(
+        RBUILDER_CONFIG_FILEPATH, RBUILDER_CONFIG_FILENAME
     )
 
 
