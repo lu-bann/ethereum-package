@@ -49,7 +49,7 @@ def launch_rbuilder(
         "cl_image": "sigp/lighthouse:v7.0.0",
         "use_separate_vc": False,
         "el_extra_params": [
-            "--rbuilder.config=/app/config/rbuilder-config.toml",
+            "--rbuilder.config=/app/config/rbuilder-config",
         ],
         "el_extra_env_vars": {"RUST_LOG":"rbuilder=debug,reth=info"},
         "cl_extra_params": ["--always-prepare-payload", "--prepare-payload-lookahead=8000"]
@@ -83,13 +83,8 @@ def launch_rbuilder(
     ] =  blocklist_data
 
     config_files_artifact_name = plan.render_templates(
-        template_and_data_by_rel_dest_filepath, "rbuilder-config.toml"
+        template_and_data_by_rel_dest_filepath, "rbuilder-config"
     )
-
-    files = {
-        "/app/config/": config_files_artifact_name,
-    }
-
 
     additional_files = {
         "/app/config/": config_files_artifact_name,
