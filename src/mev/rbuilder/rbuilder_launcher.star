@@ -213,6 +213,7 @@ def launch_rbuilder_reth(
         node_selectors,
         port_publisher,
         index,
+        additional_files
     )
     return el_context
 

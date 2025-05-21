@@ -45,6 +45,7 @@ def launch(
     node_selectors,
     port_publisher,
     participant_index,
+    additional_files,
 ):
     log_level = input_parser.get_client_log_level_or_default(
         participant.el_log_level, global_log_level, VERBOSITY_LEVELS
@@ -65,6 +66,7 @@ def launch(
         node_selectors,
         port_publisher,
         participant_index,
+        additional_files,
     )
 
     service = plan.add_service(service_name, config)
@@ -108,6 +110,7 @@ def get_config(
     node_selectors,
     port_publisher,
     participant_index,
+    additional_files,
 ):
     public_ports = {}
     discovery_port = DISCOVERY_PORT_NUM
@@ -250,6 +253,8 @@ def get_config(
                 ),
             }
         )
+
+    files.update(additional_files)
 
     config_args = {
         "image": image,
