@@ -44,10 +44,13 @@ def launch_rbuilder(
     particitpant_p.update(
         {
         "el_type": "reth", 
-        "el_image": "ghcr.io/paradigmxyz/reth:v1.3.12",
+        "el_image": rbuilder_params.rbuilder_image,
         "cl_image": "sigp/lighthouse:v7.0.0",
         "use_separate_vc": False,
-        "el_extra_env_vars": {"RUST_LOG":"reth=info"},
+        "el_extra_params": [
+            "--rbuilder.config=/app/config/rbuilder-config.toml",
+        ],
+        "el_extra_env_vars": {"RUST_LOG":"rbuilder=debug,reth=info"},
         "cl_extra_params": ["--always-prepare-payload", "--prepare-payload-lookahead=8000"]
         })
     participant = participant_struct(particitpant_p)
