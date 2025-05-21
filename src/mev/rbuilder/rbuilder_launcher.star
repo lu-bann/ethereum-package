@@ -82,14 +82,13 @@ def launch_rbuilder(
         RBUILDER_BLOCKLIST_FILENAME
     ] =  blocklist_data
 
-
     config_files_artifact_name = plan.render_templates(
-        template_and_data_by_rel_dest_filepath, "rbuilder-config"
+        template_and_data_by_rel_dest_filepath, "rbuilder-config.toml"
     )
 
-    config_file_path = shared_utils.path_join(
-        RBUILDER_CONFIG_FILEPATH, RBUILDER_CONFIG_FILENAME
-    )
+    files = {
+        "/app/config/": config_files_artifact_name,
+    }
 
 
     additional_files = {
