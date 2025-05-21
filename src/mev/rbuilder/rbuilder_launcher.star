@@ -48,7 +48,7 @@ def launch_rbuilder(
         "cl_image": "sigp/lighthouse:v7.0.0",
         "use_separate_vc": False,
         "el_extra_params": [
-            "--rbuilder.config=/app/config/config.toml",
+            "--rbuilder.config=/app/config/rbuilder-config.toml",
         ],
         "el_extra_env_vars": {"RUST_LOG":"rbuilder=debug,reth=info"},
         "cl_extra_params": ["--always-prepare-payload", "--prepare-payload-lookahead=8000"]
@@ -62,6 +62,7 @@ def launch_rbuilder(
         "RethDatadir": EXECUTION_DATA_DIRPATH_ON_CLIENT_CONTAINER,
         "ClNodes": all_cl_contexts,
         "HelixRelayUrl": helix_relay_url,
+        "GenesisForkVersion": constants.GENESIS_FORK_VERSION,
     }
     template_and_data = shared_utils.new_template_and_data(
         config_template, template_data
