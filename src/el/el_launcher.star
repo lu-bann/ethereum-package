@@ -80,6 +80,7 @@ def launch(
                 el_cl_data,
                 jwt_file,
                 network_params.network,
+                additional_files,
                 builder_type=mev_builder_type,
                 mev_params=mev_params,
             ),
