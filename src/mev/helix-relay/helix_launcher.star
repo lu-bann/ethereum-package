@@ -50,6 +50,7 @@ def launch_helix(
     el_cl_data_files_artifact_uuid,
     persistent,
     global_node_selectors,
+    flashbots_enabled_rpc,
 ):
     node_selectors = global_node_selectors
 
@@ -104,12 +105,12 @@ def launch_helix(
         "RegionName": "",
         "RedisUrl": redis_url,
         "BeaconClientUrl": beacon_client_url,
-        "SimulatorUrl": execution_url,
+        "SimulatorUrl": flashbots_enabled_rpc,
         "NetworkDirPath": network_dir_path,
         "GenesisValidatorRoot": genesis_validators_root,
         "GenesisTime": genesis_timestamp,
         # "RelayUrl": relay_url,
-        "ExecutionUrl": execution_url,
+        "ExecutionUrl": flashbots_enabled_rpc,
     }
 
     template_and_data = shared_utils.new_template_and_data(

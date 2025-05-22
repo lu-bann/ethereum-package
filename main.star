@@ -329,6 +329,11 @@ def run(plan, args={}):
                 static_files.HELIX_CONFIG_TEMPLATE_FILEPATH
             )
             helix_params = args_with_right_defaults.helix_params
+
+            flashbots_enabled_rpc = "http://{0}:{1}".format(
+                el_contexts[1].ip_addr, el_contexts[1].rpc_port_num
+            )
+
             endpoint = helix_relay.launch_helix(
                 plan,
                 helix_params,
@@ -341,6 +346,7 @@ def run(plan, args={}):
                 el_cl_data_files_artifact_uuid,
                 persistent,
                 global_node_selectors,
+                flashbots_enabled_rpc,
             )
             helix_relay_url = endpoint
         else:
