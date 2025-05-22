@@ -94,10 +94,6 @@ def launch_helix(
     # relay_url = "http://{0}:{1}".format(
     #     all_mevboost_contexts[0].private_ip_address, all_mevboost_contexts[0].port
     # )
-
-    simulator_url = "http://{0}:{1}".format(
-        el_contexts[0].ip_addr, el_contexts[0].rpc_port_num
-    )
     template_data = {
         "Hostname": "helix-postgres",
         "Port": postgres.port.number,
@@ -108,13 +104,12 @@ def launch_helix(
         "RegionName": "",
         "RedisUrl": redis_url,
         "BeaconClientUrl": beacon_client_url,
-        "SimulatorUrl": simulator_url,
+        "SimulatorUrl": execution_url,
         "NetworkDirPath": network_dir_path,
         "GenesisValidatorRoot": genesis_validators_root,
         "GenesisTime": genesis_timestamp,
         # "RelayUrl": relay_url,
         "ExecutionUrl": execution_url,
-        "DelegationContractAddress": TAIYI_CORE_CONTRACT_ADDRESS,
     }
 
     template_and_data = shared_utils.new_template_and_data(

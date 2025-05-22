@@ -209,7 +209,7 @@ def get_config(
         "--ws",
         "--ws.addr=0.0.0.0",
         "--ws.port={0}".format(WS_PORT_NUM),
-        "--ws.api=admin,engine,net,eth,web3,debug,txpool",
+        "--ws.api=admin,engine,net,eth,web3,debug,txpool,flashbots",
         "--ws.origins=*",
         "--allow-insecure-unlock",
         "--nat=extip:" + port_publisher.nat_exit_ip,
