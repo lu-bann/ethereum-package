@@ -151,6 +151,7 @@ def launch_rbuilder_reth(
         el_cl_data,
         jwt_file,
         network_params.network,
+        additional_files,
     )
             
     el_context = reth.launch(
@@ -165,7 +166,6 @@ def launch_rbuilder_reth(
         node_selectors,
         port_publisher,
         index,
-        additional_files
     )
     return el_context
 

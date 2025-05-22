@@ -45,7 +45,6 @@ def launch(
     node_selectors,
     port_publisher,
     participant_index,
-    additional_files,
 ):
     log_level = input_parser.get_client_log_level_or_default(
         participant.el_log_level, global_log_level, VERBOSITY_LEVELS
@@ -66,7 +65,6 @@ def launch(
         node_selectors,
         port_publisher,
         participant_index,
-        additional_files,
     )
 
     service = plan.add_service(service_name, config)
@@ -110,7 +108,6 @@ def get_config(
     node_selectors,
     port_publisher,
     participant_index,
-    additional_files,
 ):
     public_ports = {}
     discovery_port = DISCOVERY_PORT_NUM
@@ -249,7 +246,7 @@ def get_config(
             }
         )
 
-    files.update(additional_files)
+    files.update(launcher.additional_files)
 
     config_args = {
         "image": image,
@@ -282,11 +279,12 @@ def get_config(
     return ServiceConfig(**config_args)
 
 
-def new_reth_launcher(el_cl_genesis_data, jwt_file, network, builder_type=False, mev_params=None):
+def new_reth_launcher(el_cl_genesis_data, jwt_file, network, additional_files, builder_type=False, mev_params=None):
     return struct(
         el_cl_genesis_data=el_cl_genesis_data,
         jwt_file=jwt_file,
         network=network,
+        additional_files=additional_files,
         builder_type=builder_type,
         mev_params=mev_params,
     )
