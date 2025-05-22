@@ -331,7 +331,7 @@ def run(plan, args={}):
             helix_params = args_with_right_defaults.helix_params
 
             flashbots_enabled_rpc = "http://{0}:{1}".format(
-                el_contexts[1].ip_addr, el_contexts[1].rpc_port_num
+                all_el_contexts[1].ip_addr, all_el_contexts[1].rpc_port_num
             )
 
             endpoint = helix_relay.launch_helix(
