@@ -51,6 +51,8 @@ def launch_rbuilder(
         "use_separate_vc": False,
         "el_extra_params": [
             "--rbuilder.config=/app/config/rbuilder-config.toml",
+            "--engine.persistence-threshold=0",
+            "--engine.memory-block-buffer-target=0",
         ],
         "el_extra_env_vars": {"RUST_LOG":"rbuilder=debug,reth=info"},
         "cl_extra_params": ["--always-prepare-payload", "--prepare-payload-lookahead=8000"]
