@@ -71,7 +71,7 @@ def launch(
                 el_cl_data,
                 jwt_file,
                 network_params.network,
-                additional_files,,
+                additional_files,
             ),
             "launch_method": reth.launch,
         },
