@@ -54,7 +54,7 @@ def launch_rbuilder(
             "--engine.persistence-threshold=0",
             "--engine.memory-block-buffer-target=0",
         ],
-        "el_extra_env_vars": {"RUST_LOG":"rbuilder=debug,reth=info"},
+        "el_extra_env_vars": {"RUST_LOG":"rbuilder=trace,reth=info"},
         "cl_extra_params": ["--always-prepare-payload", "--prepare-payload-lookahead=8000"]
         })
     participant = participant_struct(particitpant_p)
