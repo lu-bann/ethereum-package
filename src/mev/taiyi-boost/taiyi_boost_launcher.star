@@ -129,12 +129,12 @@ def get_config(
                 beacon_api,
                 "--engine_api",
                 engine_url,
-                "--builder_private_key"
-                "0x6b845831c99c6bf43364bee624447d39698465df5c07f2cc4dca6e0acfbe46cd".
+                "--builder_private_key",
+                "0x6b845831c99c6bf43364bee624447d39698465df5c07f2cc4dca6e0acfbe46cd",
                 "--network",
                 network,
                 "--fee_recipient",
-                "0x2Cce2691cAC90Ac80dC551028FA00621d9c70a7F"
+                "0x2Cce2691cAC90Ac80dC551028FA00621d9c70a7F",
                 "--engine_jwt",
                 jwt,
             ],
